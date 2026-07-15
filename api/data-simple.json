@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Мой первый пост",
+      "body": "Привет, мир! Это мой первый пост.",
+      "image": "https://wdmcourses.github.io/api/img/1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Учу JavaScript",
+      "body": "JavaScript — это весело и круто!",
+      "image": "https://wdmcourses.github.io/api/img/2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Callback-функции",
+      "body": "Callback-функции — топ!",
+      "image": "https://wdmcourses.github.io/api/img/3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Создаём API",
+      "body": "Пример API на GitHub Pages!",
+      "image": "https://wdmcourses.github.io/api/img/4.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Картинки в постах",
+      "body": "Добавляем изображения к постам.",
+      "image": "https://wdmcourses.github.io/api/img/5.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Урок для всех",
+      "body": "Понятно и доступно!",
+      "image": "https://wdmcourses.github.io/api/img/6.jpg"
+    }
+  ]
+}
