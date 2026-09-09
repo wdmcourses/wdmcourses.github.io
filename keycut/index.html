@@ -14,13 +14,13 @@
 <meta property="og:url" content="https://wdmcourses.github.io/keycut/">
 <meta property="og:title" content="KeyCut — Fast lossless video editor">
 <meta property="og:description" content="Cut and join video without re-encoding. Split at keyframes, splice what you keep — original quality, export in seconds. Portable, free and open source.">
-<meta property="og:image" content="https://wdmcourses.github.io/keycut/assets/screenshot.png">
-<meta property="og:image:width" content="1593">
-<meta property="og:image:height" content="1128">
+<meta property="og:image" content="https://raw.githubusercontent.com/wdmcourses/KeyCut/master/keycut.png">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="1085">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="KeyCut — Fast lossless video editor">
 <meta name="twitter:description" content="Cut and join video without re-encoding. Split at keyframes, splice what you keep — original quality, export in seconds.">
-<meta name="twitter:image" content="https://wdmcourses.github.io/keycut/assets/screenshot.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wdmcourses/KeyCut/master/keycut.png">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -32,7 +32,7 @@
   "softwareVersion": "0.1.0",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "downloadUrl": "https://github.com/wdmcourses/KeyCut/releases",
-  "screenshot": "https://wdmcourses.github.io/keycut/assets/screenshot.png"
+  "screenshot": "https://raw.githubusercontent.com/wdmcourses/KeyCut/master/keycut.png"
 }</script>
 <link rel="icon" type="image/png" href="assets/icon.png">
 
@@ -82,6 +82,33 @@
   a:hover { text-decoration: none; }
   img { display: block; max-width: 100%; }
   .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  #figures {
+    position: absolute; top: 0; left: 0; right: 0; height: 100vh;
+    z-index: 0; overflow: hidden;
+    pointer-events: none;
+  }
+  .fig {
+    position: absolute;
+    width: 48px; height: 48px;
+    opacity: .3;
+    will-change: transform;
+  }
+  .fig.f1 { left: 6%; top: 5%; width: 56px; height: 56px; color: var(--accent); opacity: .35; filter: blur(0); }
+  .fig.f2 { left: 88%; top: 11%; width: 32px; height: 32px; color: #ff6b9d; opacity: .3; filter: blur(1px); }
+  .fig.f3 { left: 8%; top: 22%; width: 46px; height: 46px; color: var(--green); opacity: .28; filter: blur(0); }
+  .fig.f4 { left: 90%; top: 40%; width: 74px; height: 74px; color: #b18cff; opacity: .22; filter: blur(3px); }
+  .fig.f5 { left: 12%; top: 55%; width: 26px; height: 26px; color: #ff5c62; opacity: .3; filter: blur(2px); }
+  .fig.f6 { left: 31%; top: 2%; width: 62px; height: 62px; color: #4ad2c9; opacity: .2; filter: blur(4px); }
+  .fig.f7 { left: 84%; top: 32%; width: 38px; height: 38px; color: var(--amber); opacity: .3; filter: blur(1px); }
+  .fig.f8 { left: 72%; top: 15%; width: 92px; height: 92px; color: var(--accent); opacity: .25; filter: blur(2px); }
+  .fig.f9 { left: 78%; top: 48%; width: 36px; height: 36px; color: var(--green); opacity: .35; filter: blur(0); }
+  .fig.f10 { left: 62%; top: 8%; width: 22px; height: 22px; color: var(--amber); opacity: .5; filter: blur(0); }
+  .fig.f11 { left: 20%; top: 66%; width: 104px; height: 104px; color: var(--accent); opacity: .18; filter: blur(5px); }
+  .fig.f12 { left: 20%; top: 26%; width: 42px; height: 42px; color: #ff6b9d; opacity: .25; filter: blur(3px); }
+
+  .hero { position: relative; }
+  .hero .wrap { position: relative; z-index: 1; }
 
   header {
     position: sticky; top: 0; z-index: 50;
@@ -244,16 +271,34 @@
     background: var(--panel-2); border: 1px solid var(--border-hi);
     border-bottom-width: 2px; color: var(--text);
   }
-  .keys-table { max-width: 720px; margin: 0 auto; }
+  .keys-table {
+    max-width: 860px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+  .shortcut-group {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: rgba(255,255,255,.015);
+  }
+  .shortcut-group.g-playback { background: rgba(90,160,255,.045); }
+  .shortcut-group.g-edit { background: rgba(120,220,150,.045); }
+  .shortcut-group-title {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; color: var(--text-dim);
+    padding: 11px 16px 5px;
+  }
   .keys-row {
     display: grid; grid-template-columns: 220px 1fr; gap: 18px; align-items: center;
-    padding: 11px 18px; border-bottom: 1px solid var(--separator, #24282e);
+    padding: 9px 16px;
   }
-  .keys-row:first-child { border-top: 1px solid var(--separator, #24282e); }
+  .shortcut-group .keys-row + .keys-row { border-top: 1px solid var(--separator, #24282e); }
   .keys-row .keys { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
   .keys-row .keys .kcombo { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 6px; justify-content: inherit; }
-  .keys-row span:last-child { color: var(--text-dim); font-size: 14.5px; }
-  .keys-row:last-child { border-bottom-color: transparent; }
+  .keys-row span:last-child { color: var(--text-dim); font-size: 14px; }
 
   .download-wrap { max-width: 900px; margin: 0 auto; }
   .dl-hero { text-align: center; margin-bottom: 34px; }
@@ -326,6 +371,7 @@
     .grid-3, .steps, .dl-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { display: none; }
     .keys-row { grid-template-columns: 190px 1fr; }
+    .keys-table { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .hero { padding: 36px 0 24px; }
@@ -364,6 +410,20 @@
 
 <main>
   <section class="hero">
+    <div id="figures" aria-hidden="true">
+      <svg class="fig f1" data-depth="0.8" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4l14 9-14 9z"/></svg>
+      <svg class="fig f2" data-depth="0.6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4l14 9-14 9z"/></svg>
+      <svg class="fig f3" data-depth="0.75" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></svg>
+      <svg class="fig f4" data-depth="0.25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 8h5M2 12h5M2 16h5M17 8h5M17 12h5M17 16h5"/></svg>
+      <svg class="fig f5" data-depth="0.4" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+      <svg class="fig f6" data-depth="0.2" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h4v14H3zM10 5h4v14h-4zM17 5h4v14h-4z"/></svg>
+      <svg class="fig f7" data-depth="0.55" viewBox="0 0 24 24" fill="currentColor"><path d="M4 5l8 7-8 7zM12 5l8 7-8 7z"/></svg>
+      <svg class="fig f8" data-depth="0.4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h13M20 12h1"/><circle cx="17" cy="12" r="3" fill="currentColor" stroke="none"/></svg>
+      <svg class="fig f9" data-depth="0.7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4v16M14 4h4M14 20h4"/><path d="M14 12H6M6 12l4-3M6 12l4 3"/></svg>
+      <svg class="fig f10" data-depth="0.85" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+      <svg class="fig f11" data-depth="0.15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 4v16M18 4v16M2 8h4M2 12h4M2 16h4M18 8h4M18 12h4M18 16h4"/></svg>
+      <svg class="fig f12" data-depth="0.3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="m14.5 14.5 5 5"/></svg>
+    </div>
     <div class="wrap">
       <h1>KeyCut</h1>
       <p class="tagline">Fast lossless video editor</p>
@@ -401,7 +461,7 @@
       <div class="shot-wrap">
         <div class="shot-glow"></div>
         <figure class="shot">
-          <img src="assets/screenshot.png" alt="KeyCut editor window with video timeline" loading="lazy">
+          <img src="https://raw.githubusercontent.com/wdmcourses/KeyCut/master/keycut.png" alt="KeyCut editor window with video timeline" loading="lazy">
         </figure>
       </div>
     </div>
@@ -428,7 +488,7 @@
         <div class="card">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           <h3>Full timeline editing</h3>
-          <p>Split, dim, restore and merge segments right on the timeline. Resize boundaries with a drag, select many with Alt+click.</p>
+          <p>Split, dim, restore and merge segments right on the timeline. Resize boundaries with a drag, select many with Alt + Click.</p>
         </div>
         <div class="card">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v10"/><path d="m7 9 5-5 5 5"/><path d="M4 21h16"/></svg>
@@ -444,6 +504,21 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="m7.5 4.27 9 5.15"/></svg>
           <h3>Portable, no install</h3>
           <p>FFmpeg is bundled. Extract the archive and run — nothing to install, nothing left behind.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/><path d="M9 8h6"/></svg>
+          <h3>Named markers</h3>
+          <p>Drop colored markers on any keyframe and name each part. Jump between them with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> / <kbd>F</kbd> — the layout is saved with the project.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          <h3>Multi-export by parts</h3>
+          <p>One click exports every marked part as its own lossless file — the marker name becomes the file name.</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3v8.5"/></svg>
+          <h3>Disable any part</h3>
+          <p>Flip a part off and it dims on the timeline, is skipped during playback and left out of every export.</p>
         </div>
       </div>
     </div>
@@ -479,15 +554,24 @@
         <h2>Everything on the keys</h2>
       </div>
       <div class="keys-table" role="table" aria-label="Keyboard shortcuts">
-        <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Space</kbd></span><span role="cell">Play / pause</span></div>
-        <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>S</kbd> / <kbd>F</kbd></span><span role="cell">Previous / next keyframe</span></div>
-        <div class="keys-row" role="row"><span class="keys" role="cell"><span class="kcombo"><kbd>Shift</kbd>+<kbd>S</kbd></span><span class="kcombo"><kbd>Shift</kbd>+<kbd>F</kbd></span></span><span role="cell">Previous / next block</span></div>
-        <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>[</kbd> / <kbd>]</kbd></span><span role="cell">Go to start / end of project</span></div>
-        <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>C</kbd></span><span role="cell">Cut at the caret</span></div>
-        <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>X</kbd> / <kbd>R</kbd></span><span role="cell">Delete / restore segment</span></div>
-        <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>V</kbd></span><span role="cell">Merge segments</span></div>
-        <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Alt</kbd>+click</span><span role="cell">Multi-select segments</span></div>
-        <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Ctrl</kbd>+<kbd>E</kbd></span><span role="cell">Export</span></div>
+        <div class="shortcut-group g-playback">
+          <div class="shortcut-group-title">Playback &amp; Navigation</div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>S</kbd> / <kbd>F</kbd></span><span role="cell">Previous / next keyframe</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><span class="kcombo"><kbd>Shift</kbd>+<kbd>S</kbd></span><span class="kcombo"><kbd>Shift</kbd>+<kbd>F</kbd></span></span><span role="cell">Previous / next block</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>[</kbd> / <kbd>]</kbd></span><span role="cell">Previous / next marker (or start / end)</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Home</kbd> / <kbd>End</kbd></span><span role="cell">Start / end of project</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><span class="kcombo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></span><span class="kcombo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></span></span><span role="cell">Previous / next marker (or start / end)</span></div>
+        </div>
+        <div class="shortcut-group g-edit">
+          <div class="shortcut-group-title">Editing</div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>C</kbd></span><span role="cell">Cut at the caret</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>X</kbd> / <kbd>R</kbd></span><span role="cell">Delete / restore segment</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>E</kbd></span><span role="cell">Merge segments</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Alt</kbd> + Click</span><span role="cell">Multi-select segments</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Ctrl</kbd> + Hover</span><span role="cell">Resize segment edges</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>M</kbd></span><span role="cell">Add marker at the caret</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell">Middle click</span><span role="cell">Add / remove marker</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -577,6 +661,29 @@
 </footer>
 
 <script>
+(function () {
+  var figs = Array.prototype.slice.call(document.querySelectorAll("#figures .fig"));
+  if (!figs.length) return;
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  var cur = figs.map(function () { return { x: 0, y: 0 }; });
+  function tick() {
+    var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    var rx = (mx - cx) / cx, ry = (my - cy) / cy;
+    for (var i = 0; i < figs.length; i++) {
+      var d = parseFloat(figs[i].getAttribute("data-depth") || "0.3");
+      var tx = rx * d * 40;
+      var ty = ry * d * 30;
+      cur[i].x += (tx - cur[i].x) * 0.06;
+      cur[i].y += (ty - cur[i].y) * 0.06;
+      figs[i].style.transform = "translate3d(" + cur[i].x.toFixed(1) + "px," + cur[i].y.toFixed(1) + "px,0)";
+    }
+    requestAnimationFrame(tick);
+  }
+  if (reduced) return;
+  window.addEventListener("mousemove", function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+  tick();
+})();
 (function () {
   var DL = {
     win:  { url: "https://github.com/wdmcourses/KeyCut/releases/download/v0.1.0/KeyCut-win-x64.zip",  name: "Windows", file: "KeyCut-win-x64.zip" },
