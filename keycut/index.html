@@ -632,7 +632,7 @@
         <div class="emph">
           In OBS go to <b>Settings &rarr; Output</b>, switch the output mode to <b>Advanced</b>, pick <b>x264</b> (or x265) as the encoder and add
           <code>keyint=6</code>
-          to the encoder options. That writes a keyframe every 6 frames &mdash; about every 0.2&nbsp;s at 30&nbsp;fps, or 0.1&nbsp;s at 60&nbsp;fps.
+          to the encoder options. That writes a keyframe every 6 frames &ndash; about every 0.2&nbsp;s at 30&nbsp;fps, or 0.1&nbsp;s at 60&nbsp;fps.
         </div>
         <ul>
           <li><b class="emph-li">Precision:</b> cuts and deletes can land within a frame instead of jumping by whole sections.</li>
@@ -719,7 +719,7 @@
   var snote = document.getElementById("sandbox-note");
   var mnote = document.getElementById("mac-note");
   if (os) {
-    caption.innerHTML = DL[os].file + " &mdash; direct download. Need another platform? <a href='#download'>See all builds</a>.";
+    caption.innerHTML = DL[os].file + " &ndash; direct download. Need another platform? <a href='#download'>See all builds</a>.";
     hint.style.display = "none";
     if (snote && os === "linux") snote.hidden = false;
     if (mnote && os === "mac") mnote.hidden = false;
