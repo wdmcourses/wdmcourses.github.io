@@ -241,16 +241,6 @@
   .sec-head h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; letter-spacing: -.02em; }
   .sec-head p { margin-top: 12px; color: var(--text-dim); font-size: 16px; }
 
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .card {
-    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 26px 24px; transition: transform .15s, border-color .15s, background .15s;
-  }
-  .card:hover { transform: translateY(-3px); border-color: var(--border-hi); background: var(--panel-2); }
-  .card svg { width: 26px; height: 26px; color: var(--accent-strong); }
-  .card h3 { margin: 14px 0 8px; font-size: 17px; font-weight: 700; }
-  .card p { color: var(--text-dim); font-size: 14px; }
-
   .steps { counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .step {
     position: relative; background: var(--panel); border: 1px solid var(--border);
@@ -368,14 +358,14 @@
   .foot a:hover { color: var(--text); }
 
   @media (max-width: 900px) {
-    .grid-3, .steps, .dl-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps, .dl-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { display: none; }
     .keys-row { grid-template-columns: 190px 1fr; }
     .keys-table { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .hero { padding: 36px 0 24px; }
-    .grid-3, .steps, .dl-grid { grid-template-columns: 1fr; }
+    .steps, .dl-grid { grid-template-columns: 1fr; }
     .keys-row { grid-template-columns: 1fr; gap: 8px; }
     .keys-row .keys { justify-content: flex-start; }
   }
@@ -394,7 +384,6 @@
       KeyCut
     </a>
     <nav class="nav-links">
-      <a href="#features">Features</a>
       <a href="#shortcuts">Shortcuts</a>
       <a href="#download">Download</a>
       <a href="#obs">OBS guide</a>
@@ -467,63 +456,6 @@
     </div>
   </section>
 
-  <section id="features">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-tag">Features</span>
-        <h2>Everything you need to trim a video</h2>
-        <p>Fast, focused and zero quality loss – KeyCut is built around the timeline.</p>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="18" height="16" rx="2.5"/><path d="M7 4v16"/><path d="M3 8.5h4"/><path d="M3 12.5h4"/><path d="M3 16.5h4"/><circle cx="16.5" cy="16.5" r="3.8"/><path d="m14.7 16.6 1.3 1.3 2.3-2.3"/></svg>
-          <h3>Lossless by design</h3>
-          <p>No re-encoding, no quality loss. Kept segments are spliced back together frame-perfect, so the output is identical to the source.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg>
-          <h3>Cut on real keyframes</h3>
-          <p>The caret snaps to the nearest keyframe, so every cut lands cleanly – no re-encoding is needed to make a cut exact.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          <h3>Full timeline editing</h3>
-          <p>Split, dim, restore and merge segments right on the timeline. Resize boundaries with a drag, select many with Alt + Click.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v10"/><path d="m7 9 5-5 5 5"/><path d="M4 21h16"/></svg>
-          <h3>One-click export</h3>
-          <p>All kept segments come out as a single file. Lossless copy, fast as your disk allows – no render queue.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
-          <h3>Broad format support</h3>
-          <p>Reads MP4, MOV, MKV, WebM, AVI, TS/M2TS, FLV and more – whatever your camera or OBS produced.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="m7.5 4.27 9 5.15"/></svg>
-          <h3>Portable, no install</h3>
-          <p>FFmpeg is bundled. Extract the archive and run – nothing to install, nothing left behind.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/><path d="M9 8h6"/></svg>
-          <h3>Named markers</h3>
-          <p>Drop colored markers on any keyframe and name each part. Jump between them with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> / <kbd>F</kbd>.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-          <h3>Multi-export by parts</h3>
-          <p>One click exports every marked part as its own lossless file – the marker name becomes the file name.</p>
-        </div>
-        <div class="card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3v8.5"/></svg>
-          <h3>Disable any part</h3>
-          <p>Flip a part off and it dims on the timeline, is skipped during playback and left out of every export.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="how-it-works">
     <div class="wrap">
       <div class="sec-head">
@@ -541,7 +473,7 @@
         </div>
         <div class="step">
           <h3>Export</h3>
-          <p><kbd>Ctrl</kbd>+<kbd>E</kbd> – export kept segments as one clean file, or each marked part separately – losslessly or compressed.</p>
+          <p><kbd>Ctrl</kbd>+<kbd>E</kbd> – export kept segments as one clean file, or each marked part separately.</p>
         </div>
       </div>
     </div>
