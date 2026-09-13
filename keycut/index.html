@@ -265,9 +265,10 @@
     max-width: 860px; margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 16px;
     align-items: start;
   }
+  .edit-block { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
   .shortcut-group {
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -276,15 +277,18 @@
   }
   .shortcut-group.g-playback { background: rgba(90,160,255,.045); }
   .shortcut-group.g-edit { background: rgba(120,220,150,.045); }
+  .shortcut-group.g-tools { background: rgba(120,220,150,.045); }
   .shortcut-group-title {
     font-size: 11px; font-weight: 700; text-transform: uppercase;
     letter-spacing: .07em; color: var(--text-dim);
     padding: 11px 16px 5px;
   }
   .keys-row {
-    display: grid; grid-template-columns: 220px 1fr; gap: 18px; align-items: center;
+    display: grid; grid-template-columns: 1fr 220px; gap: 16px; align-items: center;
     padding: 9px 16px;
   }
+  .keys-row > span:first-child { grid-column: 2; grid-row: 1; }
+  .keys-row > span:last-child { grid-column: 1; grid-row: 1; }
   .shortcut-group .keys-row + .keys-row { border-top: 1px solid var(--separator, #24282e); }
   .keys-row .keys { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
   .keys-row .keys .kcombo { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 6px; justify-content: inherit; }
@@ -366,13 +370,17 @@
   @media (max-width: 900px) {
     .steps, .dl-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { display: none; }
-    .keys-row { grid-template-columns: 190px 1fr; }
+    .keys-row { grid-template-columns: 1fr 190px; }
+    .keys-row > span:first-child { grid-column: 2; }
+    .keys-row > span:last-child { grid-column: 1; }
     .keys-table { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .hero { padding: 36px 0 24px; }
     .steps, .dl-grid { grid-template-columns: 1fr; }
     .keys-row { grid-template-columns: 1fr; gap: 8px; }
+    .keys-row > span:first-child { grid-column: auto; grid-row: 2; }
+    .keys-row > span:last-child { grid-column: auto; grid-row: 1; }
     .keys-row .keys { justify-content: flex-start; }
   }
 
@@ -496,19 +504,28 @@
           <div class="shortcut-group-title">Playback &amp; Navigation</div>
           <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>S</kbd> / <kbd>F</kbd></span><span role="cell">Previous / next keyframe</span></div>
           <div class="keys-row" role="row"><span class="keys" role="cell"><span class="kcombo"><kbd>Shift</kbd>+<kbd>S</kbd></span><span class="kcombo"><kbd>Shift</kbd>+<kbd>F</kbd></span></span><span role="cell">Previous / next block</span></div>
-          <div class="keys-row" role="row"><span class="keys" role="cell"><span class="kcombo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></span><span class="kcombo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></span></span><span role="cell">Previous / next marker (or start / end)</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></span><span role="cell">Previous marker / start</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></span><span role="cell">Next marker / end</span></div>
           <div class="keys-row" role="row"><span class="keys" role="cell"><span class="kcombo"><kbd>Ctrl</kbd>+<kbd>F</kbd> · <kbd>Enter</kbd></span><span class="kcombo"><kbd>Shift</kbd>+<kbd>Enter</kbd></span></span><span role="cell">Find marker · next / prev</span></div>
-          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Home</kbd> / <kbd>End</kbd></span><span role="cell">Start / end of project</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Shift</kbd> + Drag</span><span role="cell">Scrub without snapping</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>0</kbd> / <kbd>1</kbd></span><span role="cell">Fit entire timeline</span></div>
+          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>2</kbd></span><span role="cell">20 seconds around caret</span></div>
         </div>
-        <div class="shortcut-group g-edit">
-          <div class="shortcut-group-title">Editing</div>
-          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>C</kbd></span><span role="cell">Cut at the caret</span></div>
-          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>X</kbd> / <kbd>R</kbd></span><span role="cell">Delete / restore segment</span></div>
-          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>E</kbd></span><span role="cell">Merge segments</span></div>
-          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Alt</kbd> + Click</span><span role="cell">Multi-select segments</span></div>
-          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Ctrl</kbd> + Hover</span><span role="cell">Resize segment edges</span></div>
-          <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>M</kbd></span><span role="cell">Add marker at the caret</span></div>
-          <div class="keys-row" role="row"><span class="keys" role="cell">Middle click</span><span role="cell">Add / remove marker</span></div>
+        <div class="edit-block">
+          <div class="shortcut-group g-edit">
+            <div class="shortcut-group-title">Editing</div>
+            <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>C</kbd></span><span role="cell">Cut at the caret</span></div>
+            <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>X</kbd> / <kbd>Delete</kbd></span><span role="cell">Delete segment</span></div>
+            <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>R</kbd></span><span role="cell">Restore segment</span></div>
+            <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>E</kbd></span><span role="cell">Merge segments</span></div>
+            <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Ctrl</kbd> + Click</span><span role="cell">Multi-select segments</span></div>
+            <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>Ctrl</kbd> + Drag</span><span role="cell">Resize segment edges</span></div>
+            <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>M</kbd></span><span role="cell">Add marker at the caret</span></div>
+            <div class="keys-row" role="row"><span class="keys" role="cell">Middle click</span><span role="cell">Add / remove marker</span></div>
+          </div>
+          <div class="shortcut-group g-tools">
+            <div class="keys-row" role="row"><span class="keys" role="cell"><kbd>F5</kbd></span><span role="cell">Reanalyze current file</span></div>
+          </div>
         </div>
       </div>
     </div>
